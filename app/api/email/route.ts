@@ -4,6 +4,13 @@ import { emailSchema } from "@/lib/schema";
 
 export async function POST(request: NextRequest) {
   try {
+    if (!resend) {
+      return NextResponse.json(
+        { error: "Email service is not configured. Please set RESEND_API_KEY." },
+        { status: 500 }
+      );
+    }
+
     const body = await request.json();
     const validatedData = emailSchema.parse(body);
 

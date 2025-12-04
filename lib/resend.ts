@@ -1,8 +1,8 @@
 import { Resend } from "resend";
 
-if (!process.env.RESEND_API_KEY) {
-  throw new Error("RESEND_API_KEY is not set");
-}
-
-export const resend = new Resend(process.env.RESEND_API_KEY);
+// Only initialize Resend if API key is available (allows build to succeed)
+// The error will be thrown at runtime when the API is actually called
+export const resend = process.env.RESEND_API_KEY 
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
