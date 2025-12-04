@@ -72,7 +72,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white mb-4 tracking-tight"
+            className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-dark mb-4 tracking-tight"
           >
             Improper Brewery
           </motion.h1>
@@ -80,7 +80,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-2 font-light"
+            className="text-xl sm:text-2xl md:text-3xl text-dark mb-2 font-light"
           >
             Proudly Brewed on the Wrong Side of the Line
           </motion.p>
@@ -88,7 +88,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg sm:text-xl text-white/80 mb-8"
+            className="text-lg sm:text-xl text-dark mb-8"
           >
             Where Proper ends and the good times begin.
           </motion.p>
@@ -105,7 +105,7 @@ export default function Hero() {
             >
               Get on the List – Be the First to Drink Improper →
             </Button>
-            <p className="text-sm text-white/70 italic">
+            <p className="text-sm text-dark/70 italic">
               No snobs allowed. Flip-flops mandatory.
             </p>
           </motion.div>
