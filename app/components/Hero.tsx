@@ -76,8 +76,7 @@ export default function Hero() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1565098772269-7b8f9f3a9b3f?w=2000&q=90)",
+            backgroundImage: "url(/images/HomeImage.jpeg)",
           }}
         />
         {/* Coral-to-blue sunset fade gradient overlay */}
