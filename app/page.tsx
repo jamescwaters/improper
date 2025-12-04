@@ -1,6 +1,6 @@
 import Hero from "./components/Hero";
 import WaveDivider from "./components/WaveDivider";
-import MapSection from "./components/MapSection";
+import RulesWeBreak from "./components/RulesWeBreak";
 import WhyImproper from "./components/WhyImproper";
 import Improper500 from "./components/Improper500";
 import BeerCarousel from "./components/BeerCarousel";
@@ -12,7 +12,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Hero />
       <WaveDivider />
-      <MapSection />
+      <RulesWeBreak />
       <WaveDivider />
       <WhyImproper />
       <WaveDivider />
