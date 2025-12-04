@@ -64,8 +64,11 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
-          <p className="text-base">
+          <p className="text-base mb-2">
             Improper Brewery — Coming 2026 to the right side of the line.
+          </p>
+          <p className="text-sm text-primary italic">
+            P.S. Proper who? 😉
           </p>
         </div>
       </div>

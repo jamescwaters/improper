@@ -148,7 +148,7 @@ export default function Improper500() {
                 whileInView={{ width: `${progressPercentage}%` }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-                className="bg-gradient-to-r from-primary to-accent h-full rounded-full"
+                className="bg-gradient-to-r from-secondary via-secondary/80 to-primary h-full rounded-full"
               />
             </div>
             <p className="text-sm md:text-base text-gray-400 mt-2">
@@ -176,11 +176,24 @@ export default function Improper500() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-primary/20 border-2 border-primary rounded-lg p-8 mb-8"
+              className="bg-primary/20 border-2 border-primary rounded-lg p-8 mb-8 space-y-4"
             >
-              <p className="text-2xl md:text-3xl font-heading text-primary">
-                You&apos;re in! Tell Proper we said hi.
+              <p className="text-2xl md:text-3xl font-heading text-primary mb-4">
+                You&apos;re etched in impropriety – share the rebellion?
               </p>
+              <motion.a
+                href="https://twitter.com/intent/tweet?text=Just%20joined%20the%20Improper%20500!%20Proudly%20brewed%20on%20the%20wrong%20side%20of%20the%20line.%20%23ImproperBrewery&url=https://www.improperbrewery.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-heading px-6 py-3 rounded-lg transition-all"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                Share on X
+              </motion.a>
             </motion.div>
           ) : (
             <motion.form

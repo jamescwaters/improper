@@ -80,8 +80,10 @@ export default function Hero() {
               "url(https://images.unsplash.com/photo-1565098772269-7b8f9f3a9b3f?w=2000&q=90)",
           }}
         />
-        {/* Dark gradient overlay bottom-to-top */}
-        <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/70 to-dark/40" />
+        {/* Coral-to-blue sunset fade gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-secondary/20 to-dark/80" />
+        {/* Dark gradient overlay bottom-to-top for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/60 to-transparent" />
       </motion.div>
 
       {/* Content */}
@@ -93,10 +95,10 @@ export default function Hero() {
           className="max-w-5xl"
         >
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 tracking-tight leading-tight"
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+            className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 tracking-tight leading-tight drop-shadow-2xl"
           >
             Improper Brewery
             <br />
@@ -121,7 +123,7 @@ export default function Hero() {
             <Button
               onClick={() => setIsOpen(true)}
               size="xl"
-              className="bg-primary hover:bg-primary/90 text-white font-heading text-xl md:text-2xl px-10 py-8 rounded-lg shadow-2xl hover:shadow-primary/50 transition-all hover:scale-105 active:scale-95"
+              className="bg-primary hover:bg-primary/90 text-white font-heading text-xl md:text-2xl px-10 py-8 rounded-lg shadow-2xl hover:shadow-primary/50 transition-all hover:scale-105 active:scale-95 animate-pulse hover:animate-none"
             >
               Join the Improper 500 – Claim Your Spot
             </Button>
