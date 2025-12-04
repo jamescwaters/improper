@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,11 +14,14 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { emailSchema, type EmailFormData } from "@/lib/schema";
+import confetti from "canvas-confetti";
 
 export default function Hero() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
 
   const {
     register,
@@ -28,6 +31,15 @@ export default function Hero() {
   } = useForm<EmailFormData>({
     resolver: zodResolver(emailSchema),
   });
+
+  const triggerConfetti = () => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ["#FF6B35", "#0099CC", "#FF9F1C"],
+    });
+  };
 
   const onSubmit = async (data: EmailFormData) => {
     setIsSubmitting(true);
@@ -40,11 +52,12 @@ export default function Hero() {
 
       if (response.ok) {
         setSubmitSuccess(true);
+        triggerConfetti();
         reset();
         setTimeout(() => {
           setIsOpen(false);
           setSubmitSuccess(false);
-        }, 3000);
+        }, 4000);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -55,10 +68,21 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary/20 via-secondary/10 to-dark/80 z-0">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-      </div>
+      {/* Background Image with Parallax */}
+      <motion.div
+        style={{ y }}
+        className="absolute inset-0 z-0"
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1565098772269-7b8f9f3a9b3f?w=2000&q=90)",
+          }}
+        />
+        {/* Dark gradient overlay bottom-to-top */}
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/70 to-dark/40" />
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center lg:text-left">
@@ -66,46 +90,42 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl"
+          className="max-w-5xl"
         >
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-dark mb-4 tracking-tight"
+            className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 tracking-tight leading-tight"
           >
             Improper Brewery
+            <br />
+            <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal">
+              Proudly Brewed on the Wrong Side of the Line
+            </span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl sm:text-2xl md:text-3xl text-dark mb-2 font-light"
-          >
-            Proudly Brewed on the Wrong Side of the Line
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg sm:text-xl text-dark mb-8"
+            className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-10 font-light"
           >
             Where Proper ends and the good times begin.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col items-center lg:items-start gap-4"
           >
             <Button
               onClick={() => setIsOpen(true)}
               size="xl"
-              className="bg-primary hover:bg-primary/90 text-white font-semibold text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
+              className="bg-primary hover:bg-primary/90 text-white font-heading text-xl md:text-2xl px-10 py-8 rounded-lg shadow-2xl hover:shadow-primary/50 transition-all hover:scale-105 active:scale-95"
             >
-              Get on the List – Be the First to Drink Improper →
+              Join the Improper 500 – Claim Your Spot
             </Button>
-            <p className="text-sm text-dark/70 italic">
+            <p className="text-sm text-white/70 italic">
               No snobs allowed. Flip-flops mandatory.
             </p>
           </motion.div>
@@ -126,7 +146,7 @@ export default function Hero() {
           {submitSuccess ? (
             <div className="py-4 text-center">
               <p className="text-lg font-semibold text-primary">
-                You&apos;re in. Now go tell Proper we said hi.
+                You&apos;re in! Tell Proper we said hi.
               </p>
             </div>
           ) : (
@@ -182,4 +202,3 @@ export default function Hero() {
     </section>
   );
 }
-

@@ -44,7 +44,7 @@ export default function Countdown() {
       transition={{ type: "spring", duration: 0.6 }}
       className="flex flex-col items-center"
     >
-      <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 min-w-[80px] md:min-w-[120px] border-2 border-gray-200">
+      <div className="bg-dark rounded-lg shadow-2xl p-4 md:p-6 min-w-[80px] md:min-w-[120px] border-2 border-primary/30">
         <motion.div
           key={value}
           initial={{ y: -20, opacity: 0 }}
@@ -62,7 +62,7 @@ export default function Countdown() {
   );
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-secondary/10">
+    <section className="py-20 bg-dark">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -71,7 +71,7 @@ export default function Countdown() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-8 text-dark">
+          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-12 text-white">
             We&apos;re opening in...
           </h2>
 
@@ -86,4 +86,3 @@ export default function Countdown() {
     </section>
   );
 }
-
