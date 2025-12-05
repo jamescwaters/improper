@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      signupNumber: count + buffer || 0,
+      signupNumber: (count ?? 0) + buffer,
       message: "Successfully joined the Improper 500!",
     });
   } catch (error) {
@@ -104,10 +104,10 @@ export async function GET() {
 
     const total = 500;
     
-    const spotsLeft = Math.max(0, total - (count + buffer || 0));
+    const spotsLeft = Math.max(0, total - ((count ?? 0) + buffer));
 
     return NextResponse.json({
-      count: count + buffer|| 0,
+      count: (count ?? 0) + buffer,
       total,
       spotsLeft,
     });
