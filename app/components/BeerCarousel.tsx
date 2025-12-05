@@ -175,7 +175,7 @@ export default function BeerCarousel() {
 
                   <div className="flex-1 flex flex-col items-center justify-center text-center z-10">
                     <p className="font-heading text-xl md:text-2xl mb-2">
-                      <span className="text-accent drop-shadow-lg font-bold">{currentBeer.name}</span>
+                      <span className={`${currentBeer.name === "Soundside Sunset Lager" ? "text-dark" : "text-accent"} drop-shadow-lg font-bold`}>{currentBeer.name}</span>
                     </p>
                     <p className={`${currentBeer.textColor}/80 text-sm md:text-base mb-4`}>
                       {currentBeer.abv} ABV

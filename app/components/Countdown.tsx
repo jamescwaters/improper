@@ -72,15 +72,16 @@ export default function Countdown() {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-12 text-white">
-            We&apos;re opening in...
+            We&apos;re opening in...Soon
           </h2>
-
+          {/*}
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             <TimeUnit value={timeLeft.days} label="Days" />
             <TimeUnit value={timeLeft.hours} label="Hours" />
             <TimeUnit value={timeLeft.minutes} label="Minutes" />
             <TimeUnit value={timeLeft.seconds} label="Seconds" />
           </div>
+          */}
         </motion.div>
       </div>
     </section>

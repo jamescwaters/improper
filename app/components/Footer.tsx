@@ -58,7 +58,7 @@ export default function Footer() {
               whileHover={{ scale: 1.05 }}
               className="text-primary hover:underline text-lg md:text-xl"
             >
-              hello@improperbrewery.com
+              improperbrewery@gmail.com
             </motion.a>
           </div>
         </div>

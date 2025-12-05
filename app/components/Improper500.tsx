@@ -10,13 +10,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { emailSchema, type EmailFormData } from "@/lib/schema";
 import confetti from "canvas-confetti";
 
-const INITIAL_SPOTS = 437;
 const TOTAL_SPOTS = 500;
 
 export default function Improper500() {
   const [spotsLeft, setSpotsLeft] = useState(500);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [initialCount, setInitialCount] = useState(0);
   const counterRef = useRef(null);
   const isInView = useInView(counterRef, { once: true });
 
@@ -29,20 +29,35 @@ export default function Improper500() {
     resolver: zodResolver(emailSchema),
   });
 
+  // Fetch initial signup count on mount
   useEffect(() => {
-    if (isInView) {
-      // Animate counter from 500 to 437
-      let current = 500;
+    fetch("/api/email")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.count !== undefined) {
+          const currentCount = data.count;
+          setInitialCount(currentCount);
+          setSpotsLeft(TOTAL_SPOTS - currentCount);
+        }
+      })
+      .catch((err) => console.error("Failed to fetch signup count:", err));
+  }, []);
+
+  useEffect(() => {
+    if (isInView && initialCount > 0) {
+      // Animate counter from 500 to current count
+      let current = TOTAL_SPOTS;
+      const target = TOTAL_SPOTS - initialCount;
       const interval = setInterval(() => {
         current -= 1;
         setSpotsLeft(current);
-        if (current <= INITIAL_SPOTS) {
+        if (current <= target) {
           clearInterval(interval);
         }
       }, 15);
       return () => clearInterval(interval);
     }
-  }, [isInView]);
+  }, [isInView, initialCount]);
 
   const triggerConfetti = () => {
     confetti({
@@ -80,13 +95,23 @@ export default function Improper500() {
       });
 
       if (response.ok) {
+        const result = await response.json();
         setSubmitSuccess(true);
-        setSpotsLeft((prev) => Math.max(0, prev - 1));
+        // Update counter with new count from server
+        if (result.signupNumber !== undefined) {
+          setSpotsLeft(TOTAL_SPOTS - result.signupNumber);
+          setInitialCount(result.signupNumber);
+        } else {
+          setSpotsLeft((prev) => Math.max(0, prev - 1));
+        }
         triggerConfetti();
         reset();
         setTimeout(() => {
           setSubmitSuccess(false);
         }, 6000);
+      } else {
+        const errorData = await response.json();
+        alert(errorData.error || "Failed to join. Please try again.");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
