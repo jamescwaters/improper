@@ -462,7 +462,7 @@ export default function HiddenPage() {
             <div className="mt-6 sm:mt-8 p-3 sm:p-4 bg-gray-50 rounded-md">
               <p className="text-xs sm:text-sm text-gray-600">
                 <strong>Note:</strong> Your authentication will persist for this browser session. 
-                If you close the browser tab or clear session storage, you'll need to enter the password again.
+                If you close the browser tab or clear session storage, you&apos;ll need to enter the password again.
               </p>
             </div>
           </div>
