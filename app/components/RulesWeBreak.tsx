@@ -22,12 +22,6 @@ const comparisons = [
     improperIcon: "🐕",
   },
   {
-    proper: "Paid parking only",
-    improper: "Parking you don't have to pay for",
-    properIcon: "💰",
-    improperIcon: "🅿️",
-  },
-  {
     proper: "Generic beer names",
     improper: "Beers with names your HOA would hate",
     properIcon: "📋",
