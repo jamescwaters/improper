@@ -19,8 +19,8 @@ export default function HiddenPage() {
   const [miscValue, setMiscValue] = useState('100,000');
   const [archEngValue, setArchEngValue] = useState('100,000');
   const [infrastructureValue, setInfrastructureValue] = useState('1,395,000');
-  const [lotsValue, setLotsValue] = useState('24');
-  const [lotPriceValue, setLotPriceValue] = useState('500,000');
+  const [lotsValue, setLotsValue] = useState('27');
+  const [lotPriceValue, setLotPriceValue] = useState('250,000');
   const parallaxRef = useRef<HTMLDivElement>(null);
   const parallaxContainerRef = useRef<HTMLDivElement>(null);
   const [isParallaxFixed, setIsParallaxFixed] = useState(false);
@@ -324,8 +324,8 @@ export default function HiddenPage() {
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse">
                   <thead>
-                    <tr>
-                      <th className="px-3 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-semibold text-gray-700 uppercase tracking-wider bg-blue-50 rounded-tl-lg">Partner</th>
+                    <tr className="bg-gray-50 border-b border-gray-500">
+                      <th className="px-3 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-semibold text-gray-700 uppercase tracking-wider rounded-tl-lg">Partner</th>
                       <th className="px-3 sm:px-4 py-2 sm:py-3 text-right text-xs sm:text-sm font-semibold text-gray-700 uppercase tracking-wider bg-blue-50">Phase One</th>
                       <th className="px-3 sm:px-4 py-2 sm:py-3 text-right text-xs sm:text-sm font-semibold text-gray-700 uppercase tracking-wider bg-green-50 rounded-tr-lg">Phase Two</th>
                     </tr>
