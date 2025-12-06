@@ -428,7 +428,7 @@ export default function HiddenPage() {
                 <div className="space-y-6">
               <div className="space-y-3">
                 <label htmlFor="z-value" className="block text-sm font-medium text-gray-900">
-                  11ac Parcel (z)
+                  11ac Parcel
                 </label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 text-base font-medium">$</span>
@@ -457,7 +457,7 @@ export default function HiddenPage() {
               </div>
               <div className="space-y-3">
                 <label htmlFor="x-value" className="block text-sm font-medium text-gray-900">
-                  Access House Parcel (x)
+                  Access House Parcel
                 </label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 text-base font-medium">$</span>
@@ -482,35 +482,6 @@ export default function HiddenPage() {
                     background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(xValue) - 300000) / (600000 - 300000)) * 100}%, #e5e7eb ${((parseValue(xValue) - 300000) / (600000 - 300000)) * 100}%, #e5e7eb 100%)`
                   }}
                   aria-label="Adjust Access House Parcel value"
-                />
-              </div>
-              <div className="space-y-3">
-                <label htmlFor="y-value" className="block text-sm font-medium text-gray-900">
-                  Sale Amount (y)
-                </label>
-                <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 text-base font-medium">$</span>
-                  <Input
-                    id="y-value"
-                    type="text"
-                    value={yValue}
-                    onChange={handleYValueChange}
-                    placeholder="0"
-                    className="w-full pl-8 pr-4 py-3 text-base bg-gray-50 border-gray-300 focus:bg-white focus:border-primary"
-                  />
-                </div>
-                <input
-                  type="range"
-                  min="1200000"
-                  max="2800000"
-                  step="10000"
-                  value={parseValue(yValue)}
-                  onChange={handleYSliderChange}
-                  className="w-full h-4 sm:h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-none"
-                  style={{
-                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(yValue) - 1200000) / (2800000 - 1200000)) * 100}%, #e5e7eb ${((parseValue(yValue) - 1200000) / (2800000 - 1200000)) * 100}%, #e5e7eb 100%)`
-                  }}
-                  aria-label="Adjust Sale Amount value"
                 />
               </div>
               <div className="space-y-3">
@@ -540,6 +511,35 @@ export default function HiddenPage() {
                     background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(miscValue) - 100000) / (500000 - 100000)) * 100}%, #e5e7eb ${((parseValue(miscValue) - 100000) / (500000 - 100000)) * 100}%, #e5e7eb 100%)`
                   }}
                   aria-label="Adjust Misc value"
+                />
+              </div>
+              <div className="space-y-3">
+                <label htmlFor="y-value" className="block text-sm font-medium text-gray-900">
+                  Sale Amount
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 text-base font-medium">$</span>
+                  <Input
+                    id="y-value"
+                    type="text"
+                    value={yValue}
+                    onChange={handleYValueChange}
+                    placeholder="0"
+                    className="w-full pl-8 pr-4 py-3 text-base bg-gray-50 border-gray-300 focus:bg-white focus:border-primary"
+                  />
+                </div>
+                <input
+                  type="range"
+                  min="1200000"
+                  max="2800000"
+                  step="10000"
+                  value={parseValue(yValue)}
+                  onChange={handleYSliderChange}
+                  className="w-full h-4 sm:h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-none"
+                  style={{
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(yValue) - 1200000) / (2800000 - 1200000)) * 100}%, #e5e7eb ${((parseValue(yValue) - 1200000) / (2800000 - 1200000)) * 100}%, #e5e7eb 100%)`
+                  }}
+                  aria-label="Adjust Sale Amount value"
                 />
               </div>
               <div className="space-y-3">
