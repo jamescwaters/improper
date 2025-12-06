@@ -131,8 +131,8 @@ export default function HiddenPage() {
     return parseValue(value) * (1/3);
   };
 
-  const totalInvestment = calculateThird(zValue) + calculateThird(xValue) + calculateThird(miscValue);
-  const netCashflow = calculateThird(yValue) - totalInvestment;
+  const totalInvestment = parseValue(zValue) + parseValue(xValue) + parseValue(miscValue);
+  const netCashflow = parseValue(yValue) - totalInvestment;
   const netCashflowZ = parseValue(zValue) + calculateThird(yValue) - totalInvestment;
   const totalInvestment2 = parseValue(archEngValue) + parseValue(infrastructureValue);
   const totalInvestmentGrandTotal = totalInvestment2 + totalInvestment;
@@ -333,8 +333,8 @@ export default function HiddenPage() {
                   <tbody>
                     <tr className="bg-white border-b border-gray-200">
                       <td className="px-3 sm:px-4 py-2 sm:py-3 text-sm font-semibold text-gray-800">The Visionary</td>
-                      <td className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-right font-bold font-mono bg-blue-50 ${parseValue(zValue) + netCashflow >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                        {formatCurrency(parseValue(zValue) + netCashflow)}
+                      <td className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-right font-bold font-mono bg-blue-50 ${parseValue(zValue) + (netCashflow / 3) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        {formatCurrency(parseValue(zValue) + (netCashflow / 3))}
                       </td>
                       <td className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-right font-bold font-mono bg-green-50 ${parseValue(zValue) + netCashflow2 / 3 >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                         {formatCurrency(parseValue(zValue) + netCashflow2 / 3)}
@@ -342,20 +342,20 @@ export default function HiddenPage() {
                     </tr>
                     <tr className="bg-white border-b border-gray-200">
                       <td className="px-3 sm:px-4 py-2 sm:py-3 text-sm font-semibold text-gray-800">The Plumber</td>
-                      <td className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-right font-bold font-mono bg-blue-50 ${netCashflow >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                        {formatCurrency(netCashflow)}
+                      <td className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-right font-bold font-mono bg-blue-50 ${netCashflow / 3 >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        {formatCurrency(netCashflow / 3)}
                       </td>
-                      <td className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-right font-bold font-mono bg-green-50 ${netCashflow2 >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                        {formatCurrency(netCashflow2 / 3)}
+                      <td className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-right font-bold font-mono bg-green-50 ${netCashflow2 / 3 >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        {formatCurrency(netCashflow2 / 3)}  
                       </td>
                     </tr>
                     <tr className="bg-white">
                       <td className="px-3 sm:px-4 py-2 sm:py-3 text-sm font-semibold text-gray-800">The Other Guy</td>
-                      <td className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-right font-bold font-mono bg-blue-50 ${netCashflow >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                        {formatCurrency(netCashflow)}
+                      <td className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-right font-bold font-mono bg-blue-50 ${netCashflow / 3 >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        {formatCurrency(netCashflow / 3)}
                       </td>
-                      <td className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-right font-bold font-mono bg-green-50 ${netCashflow2 >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                        {formatCurrency(netCashflow2 / 3)}
+                      <td className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-right font-bold font-mono bg-green-50 ${netCashflow2 / 3 >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        {formatCurrency(netCashflow2 / 3)}  
                       </td>
                     </tr>
                   </tbody>
@@ -708,10 +708,10 @@ export default function HiddenPage() {
                       <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-calculateThird(miscValue))}</td>
                     </tr>
                      <tr className="bg-gray-50 hover:bg-gray-100 transition-colors">
-                       <td className="px-3 py-3 text-sm font-semibold text-red-600 sticky left-0 bg-gray-50 z-10">Total Investment - {formatCurrency(totalInvestment * 3)}</td>
-                       <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment)}</td>
-                       <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment)}</td>
-                       <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment)}</td>
+                       <td className="px-3 py-3 text-sm font-semibold text-red-600 sticky left-0 bg-gray-50 z-10">Total Investment - {formatCurrency(totalInvestment)}</td>
+                       <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment / 3)}</td>
+                       <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment / 3)}</td>
+                       <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment / 3)}</td>
                      </tr>
                     <tr className="hover:bg-gray-50 transition-colors">
                       <td className="px-3 py-3 text-sm font-medium text-green-600 sticky left-0 bg-white z-10">Sell at Phase One - {formatCurrency(parseValue(yValue))}</td>
@@ -726,53 +726,24 @@ export default function HiddenPage() {
                       <td className="px-3 py-3 text-sm text-right font-mono text-gray-500 font-semibold">{formatCurrency(0)}</td>
                     </tr>
                     <tr id="netCashflowRow" className="bg-blue-50 hover:bg-blue-100 transition-colors border-t-2 border-blue-200">
-                      <td className="px-3 py-3 text-sm font-bold text-green-600 sticky left-0 bg-blue-50 z-10">Net Cashflow - {formatCurrency(netCashflow * 3)}</td>
+                      <td className="px-3 py-3 text-sm font-bold text-green-600 sticky left-0 bg-blue-50 z-10">Net Cashflow - {formatCurrency(netCashflow)}</td>
                       <td className="px-3 py-3 text-sm text-right font-mono font-bold">
-                        <span className={parseValue(zValue) + netCashflow >= 0 ? 'text-green-600' : 'text-red-600'}>
-                          {formatCurrency(parseValue(zValue) + netCashflow)}
+                        <span className={parseValue(zValue) + netCashflow / 3 >= 0 ? 'text-green-600' : 'text-red-600'}>
+                          {formatCurrency(parseValue(zValue) + netCashflow / 3)}
                         </span>
                       </td>
                       <td className="px-3 py-3 text-sm text-right font-mono font-bold">
-                        <span className={netCashflow >= 0 ? 'text-green-600' : 'text-red-600'}>
-                          {formatCurrency(netCashflow)}
+                        <span className={netCashflow / 3 >= 0 ? 'text-green-600' : 'text-red-600'}>
+                          {formatCurrency(netCashflow / 3)}
                         </span>
                       </td>
                       <td className="px-3 py-3 text-sm text-right font-mono font-bold">
-                        <span className={netCashflow >= 0 ? 'text-green-600' : 'text-red-600'}>
-                          {formatCurrency(netCashflow)}
+                        <span className={netCashflow / 3 >= 0 ? 'text-green-600' : 'text-red-600'}>
+                          {formatCurrency(netCashflow / 3)}
                         </span>
                       </td>
                     </tr>
-                    {/*}
-                    <tr>
-                      <td className="border border-gray-300 px-4 py-3 text-gray-700 font-semibold">ROI</td>
-                      <td className="border border-gray-300 px-4 py-3 text-gray-700 font-semibold">
-                        {(() => {
-                          const investment = totalInvestment;
-                          const return_ = parseValue(zValue) + netCashflow;
-                          const roi = investment > 0 ? ((totalInvestment - return_) / return_) * 100 : 0;
-                          return `${roi.toFixed(1)}%`;
-                        })()}
-                      </td>
-                      <td className="border border-gray-300 px-4 py-3 text-gray-700 font-semibold">
-                        {(() => {
-                          const investment = totalInvestment;
-                          const return_ = netCashflow;
-                          const roi = investment > 0 ? ((investment - return_) / return_) * 100 : 0;
-                          return `${roi.toFixed(1)}%`;
-                          //return return_;
-                        })()}
-                      </td>
-                      <td className="border border-gray-300 px-4 py-3 text-gray-700 font-semibold">
-                        {(() => {
-                          const investment = parseValue(zValue) + calculateThird(zValue) + calculateThird(xValue) + calculateThird(miscValue);
-                          const return_ = (netCashflow * (1/3)) 
-                          const roi = investment > 0 ? ((return_ - investment) / return_) * 100 : 0;
-                          return `${roi.toFixed(1)}%`;
-                        })()}
-                      </td>
-                    </tr>
-                    */}
+                  
                   </tbody>
                 </table>
                 </div>
@@ -826,21 +797,21 @@ export default function HiddenPage() {
                     </tr>
                       <tr className="bg-gray-50 hover:bg-gray-100 transition-colors">
                         <td className="px-3 py-3 text-sm font-semibold text-red-600 sticky left-0 bg-gray-50 z-10">Phase One Investment - {formatCurrency(totalInvestment)}</td>
-                        <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment)}</td>
-                        <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment)}</td>
-                        <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment)}</td>
+                        <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment / 3)}</td>
+                        <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment / 3)}</td>
+                        <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment / 3)}</td>
                       </tr>
                       <tr className="bg-gray-50 hover:bg-gray-100 transition-colors">
-                        <td className="px-3 py-3 text-sm font-semibold text-red-600 sticky left-0 bg-gray-50 z-10">Phase Two Investment - {formatCurrency(totalInvestment2 / 3)}</td>
+                        <td className="px-3 py-3 text-sm font-semibold text-red-600 sticky left-0 bg-gray-50 z-10">Phase Two Investment - {formatCurrency(totalInvestment2)}</td>
                         <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment2 / 3)}</td>
                         <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment2 / 3)}</td>
                         <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-totalInvestment2 / 3)}</td>
                       </tr>
                       <tr className="bg-gray-50 hover:bg-gray-100 transition-colors">
-                        <td className="px-3 py-3 text-sm font-semibold text-red-600 sticky left-0 bg-gray-50 z-10">Total Investment - {formatCurrency(totalInvestment + totalInvestment2 / 3)}</td>
-                        <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-(totalInvestment + totalInvestment2 / 3))}</td>
-                        <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-(totalInvestment + totalInvestment2 / 3))}</td>
-                        <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-(totalInvestment + totalInvestment2 / 3))}</td>
+                        <td className="px-3 py-3 text-sm font-semibold text-red-600 sticky left-0 bg-gray-50 z-10">Total Investment - {formatCurrency(totalInvestment + totalInvestment2)}</td>
+                        <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-(totalInvestment + totalInvestment2) / 3)}</td>
+                        <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-(totalInvestment + totalInvestment2) / 3)}</td>
+                        <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-(totalInvestment + totalInvestment2) / 3)}</td>
                       </tr>
                      <tr className="hover:bg-gray-50 transition-colors">
                        <td className="px-3 py-3 text-sm font-medium text-green-600 sticky left-0 bg-white z-10">Sell Lots - {formatCurrency(phaseTwoSell)}</td>
