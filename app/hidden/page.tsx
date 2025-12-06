@@ -82,12 +82,12 @@ export default function HiddenPage() {
           D --> E{"Step 5: Sell Merged<br/>Parcels?"}
           E -->|Yes| F["Receive ${formatValue(yValue)}"]
           E -->|No| G["Develop Vision ${formatValue(archEngValue)}"]
-          F --> H["Visionary ${formatCurrency(netCashflowZ)}"]
-          F --> I["Plumber & The Other Guy ${formatCurrency(netCashflow)}"]
+          F --> H["Visionary ${formatCurrency(parseValue(zValue) + (netCashflow / 3))}"]
+          F --> I["The Plumber & The Nerd ${formatCurrency(netCashflow / 3)}"]
           G --> J["Infrastructure (Roads & Utilities) ${formatValue(infrastructureValue)}"]
           J --> K["Phase Two: Sell Lots ${formatCurrency(phaseTwoSell)}"]
           K --> L["Visionary ${formatCurrency(parseValue(zValue) + netCashflow2 / 3)}"]
-          K --> M["Plumber & The Other Guy ${formatCurrency(netCashflow2 / 3)}"]`;
+          K --> M["The Plumber & The Nerd ${formatCurrency(netCashflow2 / 3)}"]`;
           
 
       // Render the diagram using async render
@@ -350,7 +350,7 @@ export default function HiddenPage() {
                       </td>
                     </tr>
                     <tr className="bg-white">
-                      <td className="px-3 sm:px-4 py-2 sm:py-3 text-sm font-semibold text-gray-800">The Other Guy</td>
+                      <td className="px-3 sm:px-4 py-2 sm:py-3 text-sm font-semibold text-gray-800">The Nerd</td>
                       <td className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-right font-bold font-mono bg-blue-50 ${netCashflow / 3 >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                         {formatCurrency(netCashflow / 3)}
                       </td>
@@ -685,7 +685,7 @@ export default function HiddenPage() {
                       <th className="px-3 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider sticky left-0 bg-gray-50 z-10">Step</th>
                       <th className="px-3 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider min-w-[120px]">The Visionary</th>
                       <th className="px-3 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider min-w-[120px]">The Plumber</th>
-                      <th className="px-3 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider min-w-[120px]">The Other Guy</th>
+                      <th className="px-3 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider min-w-[120px]">The Nerd</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -779,7 +779,7 @@ export default function HiddenPage() {
                       <th className="px-3 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider sticky left-0 bg-gray-50 z-10">Step</th>
                       <th className="px-3 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider min-w-[120px]">The Visionary</th>
                       <th className="px-3 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider min-w-[120px]">The Plumber</th>
-                      <th className="px-3 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider min-w-[120px]">The Other Guy</th>
+                      <th className="px-3 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider min-w-[120px]">The Nerd</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
