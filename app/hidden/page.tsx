@@ -459,7 +459,7 @@ export default function HiddenPage() {
               </div>
               <div className="space-y-3">
                 <label htmlFor="x-value" className="block text-sm font-medium text-gray-900">
-                  Access House Parcel
+                  Access Parcel
                 </label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 text-base font-medium">$</span>
