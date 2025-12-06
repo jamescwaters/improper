@@ -878,8 +878,11 @@ export default function HiddenPage() {
           {/* Note Card */}
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 sm:p-5">
             <p className="text-xs sm:text-sm text-blue-900 leading-relaxed">
-              <strong className="font-semibold">Note:</strong> Your authentication will persist for this browser session. 
-              If you close the browser tab or clear session storage, you&apos;ll need to enter the password again.
+              <strong className="font-semibold">Note:</strong> My Assumptions:
+              <p> - Infrastructure cost of $1,395,000 is priced at 3,100 linear feet of roads at $450 per foot.</p>
+              <p> - Lot average price of $250,000 is based on the average listed prices in the area.</p>
+              <p> - Lot count of 24 is a guess based on 9.5ac of buildable less roads.</p>
+              <p> - Lot size of 1/4 acre is based on the min for r1 zoning.</p>
             </p>
           </div>
         </div>
