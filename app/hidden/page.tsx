@@ -85,7 +85,9 @@ export default function HiddenPage() {
           F --> H["Visionary ${formatCurrency(netCashflowZ)}"]
           F --> I["Plumber & The Other Guy ${formatCurrency(netCashflow)}"]
           G --> J["Infrastructure (Roads & Utilities) ${formatValue(infrastructureValue)}"]
-          J --> K["Phase Two: Sell Lots ${formatCurrency(phaseTwoSell)}"]`;
+          J --> K["Phase Two: Sell Lots ${formatCurrency(phaseTwoSell)}"]
+          K --> L["Visionary ${formatCurrency(parseValue(zValue) + netCashflow2 / 3)}"]
+          K --> M["Plumber & The Other Guy ${formatCurrency(netCashflow2 / 3)}"]`;
           
 
       // Render the diagram using async render
