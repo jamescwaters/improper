@@ -208,219 +208,234 @@ export default function HiddenPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-transparent to-gray-100 px-3 sm:px-4 py-6 sm:py-12">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
-          <div className="text-center space-y-2">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Hidden Page</h1>
-            <p className="text-sm sm:text-base text-gray-600">No one else should be able to see this page</p>
+    <div className="min-h-screen bg-gray-50 pb-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        {/* Header - Sticky on mobile for context */}
+        <div className="sticky top-0 z-10 bg-white border-b border-gray-200 -mx-4 sm:-mx-6 px-4 sm:px-6 py-4 mb-6">
+          <div className="text-center">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Hidden Page</h1>
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">No one else should be able to see this page</p>
           </div>
-          
-          <div className="border-t pt-4 sm:pt-6 space-y-4 sm:space-y-6">
-            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800">Parntership</h2>
-            <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+        </div>
+
+        <div className="space-y-6">
+          {/* Introduction Card */}
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 sm:p-6">
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Partnership</h2>
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
               I created this visual to help me understand the math. Feel free to adjust the values to your liking.
             </p>
+          </div>
             
-            <div className="mt-6 sm:mt-8 space-y-3 sm:space-y-4">
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Proposed Deal Flow</h3>
-              <div className="bg-white border border-gray-200 rounded-lg p-3 sm:p-4 md:p-6 overflow-x-auto -mx-3 sm:mx-0">
-                <div ref={mermaidRef} className="mermaid flex justify-center items-center min-h-[300px] sm:min-h-[400px]">
-                  {/* Mermaid diagram will be rendered here */}
-                </div>
+          {/* Deal Flow Card */}
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 sm:p-6">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">Proposed Deal Flow</h3>
+            <div className="bg-gray-50 rounded-lg p-4 sm:p-6 overflow-x-auto -mx-2 sm:mx-0">
+              <div ref={mermaidRef} className="mermaid flex justify-center items-center min-h-[280px] sm:min-h-[400px]">
+                {/* Mermaid diagram will be rendered here */}
               </div>
             </div>
+          </div>
             
-            <div className="mt-6 sm:mt-8 space-y-3 sm:space-y-4">
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Dynamic Values - Adjust to your liking</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                <div className="space-y-2">
-                  <label htmlFor="z-value" className="block text-sm font-medium text-gray-700">
-                    11ac Parcel (z)
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-                    <Input
-                      id="z-value"
-                      type="text"
-                      value={zValue}
-                      onChange={handleZValueChange}
-                      placeholder="0"
-                      className="w-full pl-7"
-                    />
-                  </div>
-                  <input
-                    type="range"
-                    min="0"
-                    max="5000000"
-                    step="10000"
-                    value={parseValue(zValue)}
-                    onChange={handleZSliderChange}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    style={{
-                      background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${(parseValue(zValue) / 5000000) * 100}%, #e5e7eb ${(parseValue(zValue) / 5000000) * 100}%, #e5e7eb 100%)`
-                    }}
+          {/* Dynamic Values Card */}
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 sm:p-6">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">Dynamic Values</h3>
+            <p className="text-xs sm:text-sm text-gray-500 mb-5">Adjust to your liking</p>
+            <div className="space-y-6">
+              <div className="space-y-3">
+                <label htmlFor="z-value" className="block text-sm font-medium text-gray-900">
+                  11ac Parcel (z)
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 text-base font-medium">$</span>
+                  <Input
+                    id="z-value"
+                    type="text"
+                    value={zValue}
+                    onChange={handleZValueChange}
+                    placeholder="0"
+                    className="w-full pl-8 pr-4 py-3 text-base bg-gray-50 border-gray-300 focus:bg-white focus:border-primary"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="x-value" className="block text-sm font-medium text-gray-700">
-                    Access House Parcel (x)
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-                    <Input
-                      id="x-value"
-                      type="text"
-                      value={xValue}
-                      onChange={handleXValueChange}
-                      placeholder="0"
-                      className="w-full pl-7"
-                    />
-                  </div>
-                  <input
-                    type="range"
-                    min="0"
-                    max="5000000"
-                    step="10000"
-                    value={parseValue(xValue)}
-                    onChange={handleXSliderChange}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    style={{
-                      background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${(parseValue(xValue) / 5000000) * 100}%, #e5e7eb ${(parseValue(xValue) / 5000000) * 100}%, #e5e7eb 100%)`
-                    }}
+                <input
+                  type="range"
+                  min="200000"
+                  max="1500000"
+                  step="10000"
+                  value={parseValue(zValue)}
+                  onChange={handleZSliderChange}
+                  className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                  style={{
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(zValue) - 200000) / (1500000 - 200000)) * 100}%, #e5e7eb ${((parseValue(zValue) - 200000) / (1500000 - 200000)) * 100}%, #e5e7eb 100%)`
+                  }}
+                />
+              </div>
+              <div className="space-y-3">
+                <label htmlFor="x-value" className="block text-sm font-medium text-gray-900">
+                  Access House Parcel (x)
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 text-base font-medium">$</span>
+                  <Input
+                    id="x-value"
+                    type="text"
+                    value={xValue}
+                    onChange={handleXValueChange}
+                    placeholder="0"
+                    className="w-full pl-8 pr-4 py-3 text-base bg-gray-50 border-gray-300 focus:bg-white focus:border-primary"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="y-value" className="block text-sm font-medium text-gray-700">
-                    Sale Amount (y)
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-                    <Input
-                      id="y-value"
-                      type="text"
-                      value={yValue}
-                      onChange={handleYValueChange}
-                      placeholder="0"
-                      className="w-full pl-7"
-                    />
-                  </div>
-                  <input
-                    type="range"
-                    min="0"
-                    max="10000000"
-                    step="10000"
-                    value={parseValue(yValue)}
-                    onChange={handleYSliderChange}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    style={{
-                      background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${(parseValue(yValue) / 10000000) * 100}%, #e5e7eb ${(parseValue(yValue) / 10000000) * 100}%, #e5e7eb 100%)`
-                    }}
+                <input
+                  type="range"
+                  min="300000"
+                  max="600000"
+                  step="10000"
+                  value={parseValue(xValue)}
+                  onChange={handleXSliderChange}
+                  className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                  style={{
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(xValue) - 300000) / (600000 - 300000)) * 100}%, #e5e7eb ${((parseValue(xValue) - 300000) / (600000 - 300000)) * 100}%, #e5e7eb 100%)`
+                  }}
+                />
+              </div>
+              <div className="space-y-3">
+                <label htmlFor="y-value" className="block text-sm font-medium text-gray-900">
+                  Sale Amount (y)
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 text-base font-medium">$</span>
+                  <Input
+                    id="y-value"
+                    type="text"
+                    value={yValue}
+                    onChange={handleYValueChange}
+                    placeholder="0"
+                    className="w-full pl-8 pr-4 py-3 text-base bg-gray-50 border-gray-300 focus:bg-white focus:border-primary"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="misc-value" className="block text-sm font-medium text-gray-700">
-                    Misc(Legal & Demo)
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-                    <Input
-                      id="misc-value"
-                      type="text"
-                      value={miscValue}
-                      onChange={handleMiscValueChange}
-                      placeholder="0"
-                      className="w-full pl-7"
-                    />
-                  </div>
-                  <input
-                    type="range"
-                    min="0"
-                    max="2000000"
-                    step="10000"
-                    value={parseValue(miscValue)}
-                    onChange={handleMiscSliderChange}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    style={{
-                      background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${(parseValue(miscValue) / 2000000) * 100}%, #e5e7eb ${(parseValue(miscValue) / 2000000) * 100}%, #e5e7eb 100%)`
-                    }}
+                <input
+                  type="range"
+                  min="1200000"
+                  max="2800000"
+                  step="10000"
+                  value={parseValue(yValue)}
+                  onChange={handleYSliderChange}
+                  className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                  style={{
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(yValue) - 1200000) / (2800000 - 1200000)) * 100}%, #e5e7eb ${((parseValue(yValue) - 1200000) / (2800000 - 1200000)) * 100}%, #e5e7eb 100%)`
+                  }}
+                />
+              </div>
+              <div className="space-y-3">
+                <label htmlFor="misc-value" className="block text-sm font-medium text-gray-900">
+                  Misc (Legal & Demo)
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 text-base font-medium">$</span>
+                  <Input
+                    id="misc-value"
+                    type="text"
+                    value={miscValue}
+                    onChange={handleMiscValueChange}
+                    placeholder="0"
+                    className="w-full pl-8 pr-4 py-3 text-base bg-gray-50 border-gray-300 focus:bg-white focus:border-primary"
                   />
                 </div>
+                <input
+                  type="range"
+                  min="100000"
+                  max="500000"
+                  step="10000"
+                  value={parseValue(miscValue)}
+                  onChange={handleMiscSliderChange}
+                  className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                  style={{
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(miscValue) - 100000) / (500000 - 100000)) * 100}%, #e5e7eb ${((parseValue(miscValue) - 100000) / (500000 - 100000)) * 100}%, #e5e7eb 100%)`
+                  }}
+                />
               </div>
             </div>
+          </div>
             
-            <div className="mt-6 sm:mt-8 space-y-3 sm:space-y-4">
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Cashflow</h3>
-              <div className="overflow-x-auto -mx-3 sm:mx-0">
-                <div className="inline-block min-w-full align-middle">
-                  <table className="w-full border-collapse border border-gray-300 text-xs sm:text-sm">
-                    <thead>
-                      <tr className="bg-gray-100">
-                        <th className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-left font-semibold text-gray-800 whitespace-nowrap">Step</th>
-                        <th id="Scott" className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-left font-semibold text-gray-800 whitespace-nowrap">The Visionary</th>
-                        <th id="Russ" className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-left font-semibold text-gray-800 whitespace-nowrap">The Plumber</th>
-                        <th id="James" className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-left font-semibold text-gray-800 whitespace-nowrap">The Other Guy</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 whitespace-nowrap">Buy 11ac Parcel</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700">{formatCurrency(-calculateThird(zValue))}</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700">{formatCurrency(-calculateThird(zValue))}</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700">{formatCurrency(-calculateThird(zValue))}</td>
-                      </tr>
-                      <tr>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 whitespace-nowrap">Buy Access Parcel</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700">{formatCurrency(-calculateThird(xValue))}</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700">{formatCurrency(-calculateThird(xValue))}</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700">{formatCurrency(-calculateThird(xValue))}</td>
-                      </tr>
-                      <tr>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 whitespace-nowrap">Misc</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700">{formatCurrency(-calculateThird(miscValue))}</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700">{formatCurrency(-calculateThird(miscValue))}</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700">{formatCurrency(-calculateThird(miscValue))}</td>
-                      </tr>
-                      <tr>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 whitespace-nowrap">Sell at Phase One</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700">{formatCurrency(calculateThird(yValue))}</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700">{formatCurrency(calculateThird(yValue))}</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700">{formatCurrency(calculateThird(yValue))}</td>
-                      </tr>
-                      <tr>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 font-semibold whitespace-nowrap">Gross Cashflow</td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 font-semibold">
+          {/* Cashflow Card */}
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 sm:p-6">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">Cashflow</h3>
+            <div className="overflow-x-auto -mx-5 sm:-mx-6 px-5 sm:px-6">
+              <div className="inline-block min-w-full align-middle">
+                <table className="w-full border-collapse text-sm">
+                  <thead>
+                    <tr className="bg-gray-50 border-b-2 border-gray-200">
+                      <th className="px-3 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider sticky left-0 bg-gray-50 z-10">Step</th>
+                      <th className="px-3 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider min-w-[120px]">The Visionary</th>
+                      <th className="px-3 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider min-w-[120px]">The Plumber</th>
+                      <th className="px-3 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider min-w-[120px]">The Other Guy</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr className="hover:bg-gray-50 transition-colors">
+                      <td className="px-3 py-3 text-sm font-medium text-gray-900 sticky left-0 bg-white z-10">Buy 11ac Parcel</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-calculateThird(zValue))}</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-calculateThird(zValue))}</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-calculateThird(zValue))}</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50 transition-colors">
+                      <td className="px-3 py-3 text-sm font-medium text-gray-900 sticky left-0 bg-white z-10">Buy Access Parcel</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-calculateThird(xValue))}</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-calculateThird(xValue))}</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-calculateThird(xValue))}</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50 transition-colors">
+                      <td className="px-3 py-3 text-sm font-medium text-gray-900 sticky left-0 bg-white z-10">Misc</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-calculateThird(miscValue))}</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-calculateThird(miscValue))}</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-red-600">{formatCurrency(-calculateThird(miscValue))}</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50 transition-colors">
+                      <td className="px-3 py-3 text-sm font-medium text-gray-900 sticky left-0 bg-white z-10">Sell at Phase One</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-green-600">{formatCurrency(calculateThird(yValue))}</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-green-600">{formatCurrency(calculateThird(yValue))}</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-green-600">{formatCurrency(calculateThird(yValue))}</td>
+                    </tr>
+                    <tr className="bg-gray-50 hover:bg-gray-100 transition-colors">
+                      <td className="px-3 py-3 text-sm font-semibold text-gray-900 sticky left-0 bg-gray-50 z-10">Gross Cashflow</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono font-semibold">
+                        <span className={calculateThird(yValue) - calculateThird(zValue) - calculateThird(xValue) - calculateThird(miscValue) >= 0 ? 'text-green-600' : 'text-red-600'}>
                           {formatCurrency(calculateThird(yValue) - calculateThird(zValue) - calculateThird(xValue) - calculateThird(miscValue))}
-                        </td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 font-semibold">
-                          {formatCurrency(calculateThird(yValue) - calculateThird(zValue) - calculateThird(xValue) - calculateThird(miscValue))}
-                        </td>
-                        <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 font-semibold">
-                          {formatCurrency(calculateThird(yValue) - calculateThird(zValue) - calculateThird(xValue) - calculateThird(miscValue))}
-                        </td>
-                      </tr>
-                    <tr>
-                      <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 font-semibold whitespace-nowrap">11ac Proceeds (Step 2)</td>
-                      <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 font-semibold">
-                        {formatCurrency(parseValue(zValue))}
+                        </span>
                       </td>
-                      <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 font-semibold">
-                        {formatCurrency(0)}
+                      <td className="px-3 py-3 text-sm text-right font-mono font-semibold">
+                        <span className={calculateThird(yValue) - calculateThird(zValue) - calculateThird(xValue) - calculateThird(miscValue) >= 0 ? 'text-green-600' : 'text-red-600'}>
+                          {formatCurrency(calculateThird(yValue) - calculateThird(zValue) - calculateThird(xValue) - calculateThird(miscValue))}
+                        </span>
                       </td>
-                      <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 font-semibold">
-                        {formatCurrency(0)}
+                      <td className="px-3 py-3 text-sm text-right font-mono font-semibold">
+                        <span className={calculateThird(yValue) - calculateThird(zValue) - calculateThird(xValue) - calculateThird(miscValue) >= 0 ? 'text-green-600' : 'text-red-600'}>
+                          {formatCurrency(calculateThird(yValue) - calculateThird(zValue) - calculateThird(xValue) - calculateThird(miscValue))}
+                        </span>
                       </td>
                     </tr>
-                    <tr>
-                      <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 font-semibold whitespace-nowrap">Net Cashflow</td>
-                      <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 font-semibold">
-                        {formatCurrency(parseValue(zValue) + netCashflow)}
+                    <tr className="hover:bg-gray-50 transition-colors">
+                      <td className="px-3 py-3 text-sm font-medium text-gray-900 sticky left-0 bg-white z-10">11ac Proceeds (Step 2)</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-green-600 font-semibold">{formatCurrency(parseValue(zValue))}</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-gray-500 font-semibold">{formatCurrency(0)}</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono text-gray-500 font-semibold">{formatCurrency(0)}</td>
+                    </tr>
+                    <tr className="bg-blue-50 hover:bg-blue-100 transition-colors border-t-2 border-blue-200">
+                      <td className="px-3 py-3 text-sm font-bold text-gray-900 sticky left-0 bg-blue-50 z-10">Net Cashflow</td>
+                      <td className="px-3 py-3 text-sm text-right font-mono font-bold">
+                        <span className={parseValue(zValue) + netCashflow >= 0 ? 'text-green-600' : 'text-red-600'}>
+                          {formatCurrency(parseValue(zValue) + netCashflow)}
+                        </span>
                       </td>
-                      <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 font-semibold">
-                        {formatCurrency(netCashflow)}
+                      <td className="px-3 py-3 text-sm text-right font-mono font-bold">
+                        <span className={netCashflow >= 0 ? 'text-green-600' : 'text-red-600'}>
+                          {formatCurrency(netCashflow)}
+                        </span>
                       </td>
-                      <td className="border border-gray-300 px-2 sm:px-3 md:px-4 py-2 sm:py-3 text-gray-700 font-semibold">
-                      {formatCurrency(netCashflow)}
+                      <td className="px-3 py-3 text-sm text-right font-mono font-bold">
+                        <span className={netCashflow >= 0 ? 'text-green-600' : 'text-red-600'}>
+                          {formatCurrency(netCashflow)}
+                        </span>
                       </td>
                     </tr>
                     {/*}
@@ -458,13 +473,13 @@ export default function HiddenPage() {
                 </div>
               </div>
             </div>
-            
-            <div className="mt-6 sm:mt-8 p-3 sm:p-4 bg-gray-50 rounded-md">
-              <p className="text-xs sm:text-sm text-gray-600">
-                <strong>Note:</strong> Your authentication will persist for this browser session. 
-                If you close the browser tab or clear session storage, you&apos;ll need to enter the password again.
-              </p>
-            </div>
+
+          {/* Note Card */}
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 sm:p-5">
+            <p className="text-xs sm:text-sm text-blue-900 leading-relaxed">
+              <strong className="font-semibold">Note:</strong> Your authentication will persist for this browser session. 
+              If you close the browser tab or clear session storage, you&apos;ll need to enter the password again.
+            </p>
           </div>
         </div>
       </div>
