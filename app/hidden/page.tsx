@@ -297,7 +297,7 @@ export default function HiddenPage() {
         {/* Header - Visible at top */}
         <div className="bg-white border-b border-gray-200 -mx-4 sm:-mx-6 px-4 sm:px-6 py-4 mb-6">
           <div className="text-center">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Hidden Page</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Project 311 - Hidden Page</h1>
             <p className="text-xs sm:text-sm text-gray-500 mt-1">No one else should be able to see this page</p>
           </div>
         </div>
@@ -445,14 +445,14 @@ export default function HiddenPage() {
                 </div>
                 <input
                   type="range"
-                  min="200000"
+                  min="0"
                   max="1500000"
                   step="10000"
                   value={parseValue(zValue)}
                   onChange={handleZSliderChange}
                   className="w-full h-4 sm:h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-none"
                   style={{
-                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(zValue) - 200000) / (1500000 - 200000)) * 100}%, #e5e7eb ${((parseValue(zValue) - 200000) / (1500000 - 200000)) * 100}%, #e5e7eb 100%)`
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${(parseValue(zValue) / 1500000) * 100}%, #e5e7eb ${(parseValue(zValue) / 1500000) * 100}%, #e5e7eb 100%)`
                   }}
                   aria-label="Adjust 11ac Parcel value"
                 />
@@ -474,14 +474,14 @@ export default function HiddenPage() {
                 </div>
                 <input
                   type="range"
-                  min="300000"
+                  min="0"
                   max="600000"
                   step="10000"
                   value={parseValue(xValue)}
                   onChange={handleXSliderChange}
                   className="w-full h-4 sm:h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-none"
                   style={{
-                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(xValue) - 300000) / (600000 - 300000)) * 100}%, #e5e7eb ${((parseValue(xValue) - 300000) / (600000 - 300000)) * 100}%, #e5e7eb 100%)`
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${(parseValue(xValue) / 600000) * 100}%, #e5e7eb ${(parseValue(xValue) / 600000) * 100}%, #e5e7eb 100%)`
                   }}
                   aria-label="Adjust Access House Parcel value"
                 />
@@ -503,14 +503,14 @@ export default function HiddenPage() {
                 </div>
                 <input
                   type="range"
-                  min="100000"
+                  min="0"
                   max="500000"
                   step="10000"
                   value={parseValue(miscValue)}
                   onChange={handleMiscSliderChange}
                   className="w-full h-4 sm:h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-none"
                   style={{
-                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(miscValue) - 100000) / (500000 - 100000)) * 100}%, #e5e7eb ${((parseValue(miscValue) - 100000) / (500000 - 100000)) * 100}%, #e5e7eb 100%)`
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${(parseValue(miscValue) / 500000) * 100}%, #e5e7eb ${(parseValue(miscValue) / 500000) * 100}%, #e5e7eb 100%)`
                   }}
                   aria-label="Adjust Misc value"
                 />
@@ -532,14 +532,14 @@ export default function HiddenPage() {
                 </div>
                 <input
                   type="range"
-                  min="1200000"
+                  min="0"
                   max="2800000"
                   step="10000"
                   value={parseValue(yValue)}
                   onChange={handleYSliderChange}
                   className="w-full h-4 sm:h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-none"
                   style={{
-                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(yValue) - 1200000) / (2800000 - 1200000)) * 100}%, #e5e7eb ${((parseValue(yValue) - 1200000) / (2800000 - 1200000)) * 100}%, #e5e7eb 100%)`
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${(parseValue(yValue) / 2800000) * 100}%, #e5e7eb ${(parseValue(yValue) / 2800000) * 100}%, #e5e7eb 100%)`
                   }}
                   aria-label="Adjust Sale Amount value"
                 />
@@ -561,14 +561,14 @@ export default function HiddenPage() {
                 </div>
                 <input
                   type="range"
-                  min="25000"
+                  min="0"
                   max="200000"
                   step="5000"
                   value={parseValue(archEngValue)}
                   onChange={handleArchEngSliderChange}
                   className="w-full h-4 sm:h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-none"
                   style={{
-                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(archEngValue) - 25000) / (200000 - 25000)) * 100}%, #e5e7eb ${((parseValue(archEngValue) - 25000) / (200000 - 25000)) * 100}%, #e5e7eb 100%)`
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${(parseValue(archEngValue) / 200000) * 100}%, #e5e7eb ${(parseValue(archEngValue) / 200000) * 100}%, #e5e7eb 100%)`
                   }}
                 />
               </div>
@@ -589,14 +589,14 @@ export default function HiddenPage() {
                 </div>
                 <input
                   type="range"
-                  min="1000000"
+                  min="0"
                   max="2500000"
                   step="10000"
                   value={parseValue(infrastructureValue)}
                   onChange={handleInfrastructureSliderChange}
                   className="w-full h-4 sm:h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-none"
                   style={{
-                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(infrastructureValue) - 1000000) / (2500000 - 1000000)) * 100}%, #e5e7eb ${((parseValue(infrastructureValue) - 1000000) / (2500000 - 1000000)) * 100}%, #e5e7eb 100%)`
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${(parseValue(infrastructureValue) / 2500000) * 100}%, #e5e7eb ${(parseValue(infrastructureValue) / 2500000) * 100}%, #e5e7eb 100%)`
                   }}
                 />
               </div>
@@ -614,14 +614,14 @@ export default function HiddenPage() {
                 />
                 <input
                   type="range"
-                  min="10"
+                  min="0"
                   max="40"
                   step="1"
-                  value={parseInt(lotsValue) || 10}
+                  value={parseInt(lotsValue) || 0}
                   onChange={handleLotsSliderChange}
                   className="w-full h-4 sm:h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-none"
                   style={{
-                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${(((parseInt(lotsValue) || 10) - 10) / (40 - 10)) * 100}%, #e5e7eb ${(((parseInt(lotsValue) || 10) - 10) / (40 - 10)) * 100}%, #e5e7eb 100%)`
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseInt(lotsValue) || 0) / 40) * 100}%, #e5e7eb ${((parseInt(lotsValue) || 0) / 40) * 100}%, #e5e7eb 100%)`
                   }}
                 />
               </div>
@@ -642,14 +642,14 @@ export default function HiddenPage() {
                 </div>
                 <input
                   type="range"
-                  min="70000"
+                  min="0"
                   max="1000000"
                   step="10000"
                   value={parseValue(lotPriceValue)}
                   onChange={handleLotPriceSliderChange}
                   className="w-full h-4 sm:h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-none"
                   style={{
-                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${((parseValue(lotPriceValue) - 70000) / (1000000 - 70000)) * 100}%, #e5e7eb ${((parseValue(lotPriceValue) - 70000) / (1000000 - 70000)) * 100}%, #e5e7eb 100%)`
+                    background: `linear-gradient(to right, #4B5563 0%, #4B5563 ${(parseValue(lotPriceValue) / 1000000) * 100}%, #e5e7eb ${(parseValue(lotPriceValue) / 1000000) * 100}%, #e5e7eb 100%)`
                   }}
                 />
               </div>
